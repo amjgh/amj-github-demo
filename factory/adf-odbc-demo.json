@@ -1,0 +1,9 @@
+{
+	"name": "adf-odbc-demo",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "762c70cd-d6a6-41d4-a1df-0b94fc8b6fe3",
+		"tenantId": "06675265-df78-482c-b1bb-8d2997e64909"
+	}
+}

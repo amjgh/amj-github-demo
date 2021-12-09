@@ -1,0 +1,42 @@
+{
+	"name": "PL-odbc-demo",
+	"properties": {
+		"description": "PL-odbc-demo",
+		"activities": [
+			{
+				"name": "List Tables",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "USE WAREHOUSE",
+						"value": "COMPUTE_WH"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SnowflakeSource",
+						"query": "select * from SNOWFLAKE_SAMPLE_DATA.information_schema.tables where table_Schema != 'INFORMATION_SCHEMA' and row_count < 1000 and table_Schema = 'TPCDS_SF10TCL' and table_name = 'SHIP_MODE';",
+						"exportSettings": {
+							"type": "SnowflakeExportCopyCommand"
+						}
+					},
+					"dataset": {
+						"referenceName": "TableList",
+						"type": "DatasetReference"
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-12-09T17:07:22Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
